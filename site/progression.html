@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progression Graph - TimberMath</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="header-title"><h1>TimberMath</h1></a>
+    <nav class="header-nav">
+      <a href="progression.html" class="nav-link active">Progression Graph</a>
+      <a href="colony.html" class="nav-link">Colony Planner</a>
+      <a href="reference.html" class="nav-link">Reference</a>
+    </nav>
+    <div class="header-controls">
+      <select id="faction-select">
+        <option value="Folktails">Folktails</option>
+        <option value="IronTeeth">Iron Teeth</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <div class="flow-toolbar">
+      <button id="flow-tour-btn" class="flow-toolbar-btn" title="Take a tour">Help</button>
+      <button id="flow-reset-view" class="flow-toolbar-btn" title="Reset view">Reset Graph</button>
+      <div id="flow-legend" class="flow-legend">
+        <span class="legend-item"><span class="legend-swatch" data-category="good"></span>Good</span>
+        <span class="legend-item"><span class="legend-swatch" data-category="building"></span>Building</span>
+        <span class="legend-item"><span class="legend-swatch" data-category="nature"></span>Nature</span>
+        <span class="legend-item"><span class="legend-line recipe"></span>Recipe</span>
+        <span class="legend-item"><span class="legend-line buildcost"></span>Build cost</span>
+      </div>
+      <input type="text" id="flow-search" placeholder="Search for a good...">
+    </div>
+    <div id="flow-container" class="flow-container"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@joint/core@4.2.4/dist/joint.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.2.4/dist/graphlib.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@dagrejs/dagre@1.1.4/dist/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@joint/layout-directed-graph@4.2.3/dist/DirectedGraph.min.js"></script>
+  <script type="module" src="js/progression-page.js"></script>
+</body>
+</html>
