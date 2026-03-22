@@ -11,6 +11,7 @@ const EDGE_HIGHLIGHT = "#88bb88", BUILDCOST_HIGHLIGHT = "#bb88cc";
 
 const NODE_STYLES = {
   good:     { fill: "#1a2818", stroke: "#6aaa4a" },
+  food:     { fill: "#2a1a18", stroke: "#cc8844" },
   building: { fill: "#1e1e28", stroke: "#8080a0" },
   nature:   { fill: "#28231a", stroke: "#a0884a" },
 };
@@ -357,8 +358,14 @@ function roundedRect(width, height, radius) {
   return `M${radius} 0H${width-radius}Q${width} 0 ${width} ${radius}V${height-radius}Q${width} ${height} ${width-radius} ${height}H${radius}Q0 ${height} 0 ${height-radius}V${radius}Q0 0 ${radius} 0Z`;
 }
 
+function hexagon(width, height) {
+  const inset = height / 2;
+  return `M${inset} 0H${width - inset}L${width} ${height / 2}L${width - inset} ${height}H${inset}L0 ${height / 2}Z`;
+}
+
 function nodeShape(type, width, height) {
   if (type === "building") return `M0 0H${width}V${height}H0Z`;
+  if (type === "food") return hexagon(width, height);
   return roundedRect(width, height, height / 2);
 }
 
@@ -469,10 +476,11 @@ async function renderWithJointJS() {
   const elements = [], links = [];
 
   for (const node of graphData.nodes.values()) {
-    const category = node.nodeType === "building" ? "building" : node.isSource ? "nature" : "good";
+    const category = node.nodeType === "building" ? "building" : node.groupId === "Food" ? "food" : node.isSource ? "nature" : "good";
     const style = NODE_STYLES[category];
-    const fontSize = category === "good" ? 11 : 10;
-    const width = textWidth(node.displayName) + TEXT_PADDING, height = NODE_HEIGHT;
+    const fontSize = category === "good" || category === "food" ? 11 : 10;
+    const textW = textWidth(node.displayName) + TEXT_PADDING;
+    const width = category === "food" ? textW + NODE_HEIGHT / 2 : textW, height = NODE_HEIGHT;
     const element = new FlowNode({
       size: { width, height },
       attrs: {
