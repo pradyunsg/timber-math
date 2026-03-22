@@ -1269,6 +1269,7 @@ main:has(.flow-container) {
 }
 
 .legend-swatch[data-category="good"] { background: #1a2818; border-color: #6aaa4a; border-radius: 50%; }
+.legend-swatch[data-category="food"] { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpolygon points='3.5,1 10.5,1 13,7 10.5,13 3.5,13 1,7' fill='%232a1a18' stroke='%23cc8844' stroke-width='1.5'/%3E%3C/svg%3E"); border: none; }
 .legend-swatch[data-category="building"] { background: #1e1e28; border-color: #8080a0; border-radius: 0; }
 .legend-swatch[data-category="nature"] { background: #28231a; border-color: #a0884a; border-radius: 50%; }
 
