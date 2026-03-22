@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimberMath</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <div class="landing landing-editorial">
+      <h2 class="landing-title">TimberMath</h2>
+      <p class="landing-subtitle">Surfacing the raw game data behind Timberborn into useful planning tools.</p>
+      <p class="landing-version" id="game-version"></p>
+      <div class="landing-cards-editorial">
+        <a href="progression.html" class="landing-card landing-card-featured">
+          <h3>Progression Graph</h3>
+          <p>Interactive graph showing the progression from raw materials through buildings and recipes to advanced goods. Click any node to trace its full supply chain.</p>
+          <span class="landing-card-cta">Explore the graph &rarr;</span>
+        </a>
+        <div class="landing-cards-secondary">
+          <a href="colony.html" class="landing-card">
+            <h3>Colony Planner</h3>
+            <p>Add buildings and resource tiles, set population, and see production, consumption, power, and drought readiness.</p>
+            <span class="landing-card-cta">Plan a colony &rarr;</span>
+          </a>
+          <a href="reference.html" class="landing-card">
+            <h3>Reference</h3>
+            <p>Browse goods, recipes, buildings, and natural resources. See what produces what, cross-referenced.</p>
+            <span class="landing-card-cta">Browse data &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="module">
+    const resp = await fetch("data/version.json");
+    if (resp.ok) {
+      const { gameVersion } = await resp.json();
+      document.getElementById("game-version").textContent = `Based on Timberborn ${gameVersion}`;
+    }
+  </script>
+</body>
+</html>

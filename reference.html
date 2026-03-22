@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reference - TimberMath</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="header-title"><h1>TimberMath</h1></a>
+    <nav class="header-nav">
+      <a href="progression.html" class="nav-link">Progression Graph</a>
+      <a href="colony.html" class="nav-link">Colony Planner</a>
+      <a href="reference.html" class="nav-link active">Reference</a>
+    </nav>
+    <div class="header-controls">
+      <select id="faction-select">
+        <option value="Folktails">Folktails</option>
+        <option value="IronTeeth">Iron Teeth</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <div class="reference-search">
+      <input type="text" id="reference-search-input" placeholder="Search goods, recipes, buildings...">
+      <div class="reference-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="goods">Goods</button>
+        <button class="filter-btn" data-filter="recipes">Recipes</button>
+        <button class="filter-btn" data-filter="buildings">Buildings</button>
+        <button class="filter-btn" data-filter="nature">Nature</button>
+      </div>
+    </div>
+    <div class="reference-layout">
+      <div id="reference-list" class="reference-list"></div>
+      <div id="reference-detail" class="reference-detail">
+        <p class="placeholder">Select an item to see details</p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="js/reference-page.js"></script>
+</body>
+</html>
