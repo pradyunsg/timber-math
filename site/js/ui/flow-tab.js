@@ -669,7 +669,8 @@ function applyHighlight() {
       }
     }
   }
-  const directEdgeKeys = new Set(directEdges.map(edge => `${edge.kind}:${edge.from}->${edge.to}`));
+  const dedupedEdges = [...new Map(directEdges.map(e => [`${e.kind}:${e.from}->${e.to}`, e])).values()];
+  const directEdgeKeys = new Set(dedupedEdges.map(edge => `${edge.kind}:${edge.from}->${edge.to}`));
 
   for (const [id, element] of cellMap) {
     if (connectedNodes.has(id)) {
@@ -691,7 +692,7 @@ function applyHighlight() {
     }
   }
 
-  const redundantEdges = directEdges.filter(edge => edge.isRedundant);
+  const redundantEdges = dedupedEdges.filter(edge => edge.isRedundant);
   if (redundantEdges.length) {
     const extraEdges = [];
     for (const edge of redundantEdges) {
